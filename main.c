@@ -4,13 +4,25 @@
 #include <arpa/inet.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "tui.h"
 
 int main(){
+    
+    int port = 8081;
+    char port_buffer[16];
+    
+    printf("[*] enter port [8081]: ");
+    if(fgets(port_buffer, sizeof(port_buffer), stdin)){
+        port_buffer[strcspn(port_buffer, "\n")] = 0;
+        if(strlen(port_buffer) > 0 && atoi(port_buffer) != 0){
+            port = atoi(port_buffer);
+        } else{
+            printf("[x] input error. using default value\n");
+        }
+    }
 
-    int port = 80;
-    printf("[*] enter port: ");
-    scanf("%d", &port);
+    //scanf("%d", &port); 
     printf("\n[*] htons port: %u\n", htons(port));
 
     int sock = socket(AF_INET, SOCK_STREAM, 0);
