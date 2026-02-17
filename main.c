@@ -82,9 +82,9 @@ int main(){
             close(client);
             continue;
         }
-
         /*
-        // extracting requested path from HTTP request 
+        // extracting requested path from HTTP request
+        // (this is the old one, i guess sscanf() from above is more safe and convenient way to parse at least first line of HTTP request) 
         //
         char *http_start = strchr(buf, ' '); // determine HTTP method, since first line in request looks like: 'GET /requested/path HTTP/1.1' and there is always space between HTTP method and reqeusted path
         //if(!http_start) return -1;
@@ -125,7 +125,6 @@ int main(){
         // actually they will close automatically after program has finished running, but there may be some errors.
         // additionally, if you have multiple client file descriptors open, you may run out of limits for open files on your system
         close(client);
-        //printf("[+] done, server client number %u", client_count);
         client_count++;
     }
     close(sock);
