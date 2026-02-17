@@ -123,7 +123,8 @@ int main(){
         // to close all created file descriptors properly
         // 
         // actually they will close automatically after program has finished running, but there may be some errors.
-        // additionally, if you have multiple client file descriptors open, you may run out of limits for open files on your system
+        // additionally, if you have multiple client file descriptors open, you may run out of limits for open files on your system,
+        // so it's really desirable to close at least all client file descriptors
         close(client);
         client_count++;
     }
