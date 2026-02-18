@@ -18,7 +18,7 @@ int main(){
         if(strlen(port_buffer) > 0 && atoi(port_buffer) != 0){
             port = atoi(port_buffer);
         } else{
-            printf("[x] input error. using default value\n");
+            printf("[*] input failed. using default value\n");
         }
     }
 
@@ -52,7 +52,7 @@ int main(){
         perror("[x] listen error");
         return 1;
     } else{
-       printf("[+] all done. listening on port %u\n", port); 
+       printf("[*] all done.\n[+] listening on http://127.0.0.1:%u\n", port);
     }
     
     int client_count = 0;
